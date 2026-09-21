@@ -1,0 +1,524 @@
+/* ------------------------------------------------------------------
+   Diego Serrano — personal academic site
+   One stylesheet, no build step. Palette and type live in :root.
+
+   Palette: pine green identity rail, green-biased neutrals.
+   Type:    Newsreader (display) + Source Sans 3 (body), from Google
+            Fonts, each with a real fallback stack.
+------------------------------------------------------------------ */
+
+:root {
+  /* surfaces and ink — neutrals biased green, not flat grey */
+  --bg:         #fcfdfb;
+  --surface:    #f0f5f1;
+  --ink:        #17211c;
+  --ink-soft:   #5b6b63;
+  --rule:       #dde5df;
+
+  /* green identity */
+  --green-deep: #123a2d;
+  --green:      #1c5a45;
+  --green-lift: #2f8a67;
+  --green-tint: #e2f0e8;
+
+  --accent:      var(--green);
+  --accent-tint: var(--green-tint);
+
+  /* the identity rail */
+  --rail:        var(--green-deep);
+  --rail-ink:    #e8f2ec;
+  --rail-soft:   #9dbdae;
+  --rail-rule:   #295044;
+  --rail-active: #8fd9b7;
+
+  --award: #b07c1f;
+
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  --rail-w: 268px;
+  --measure: 38rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:         #0e1412;
+    --surface:    #16201b;
+    --ink:        #e7ede9;
+    --ink-soft:   #97a69e;
+    --rule:       #26322b;
+
+    --green-deep: #0b1a15;
+    --green:      #6fc79c;
+    --green-lift: #8fd9b7;
+    --green-tint: #17291f;
+
+    --rail:        #101b16;
+    --rail-ink:    #dfeae4;
+    --rail-soft:   #8aa295;
+    --rail-rule:   #223228;
+    --rail-active: #8fd9b7;
+
+    --award: #d8ab55;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg:         #0e1412;
+  --surface:    #16201b;
+  --ink:        #e7ede9;
+  --ink-soft:   #97a69e;
+  --rule:       #26322b;
+
+  --green-deep: #0b1a15;
+  --green:      #6fc79c;
+  --green-lift: #8fd9b7;
+  --green-tint: #17291f;
+
+  --rail:        #101b16;
+  --rail-ink:    #dfeae4;
+  --rail-soft:   #8aa295;
+  --rail-rule:   #223228;
+  --rail-active: #8fd9b7;
+
+  --award: #d8ab55;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green-lift);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------- layout */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 4rem 3rem 5rem;
+}
+
+.content {
+  max-width: var(--measure);
+  margin-inline: auto; /* keeps the column centred on wide monitors */
+}
+
+/* ----------------------------------------------- the identity rail */
+
+.sidebar {
+  width: var(--rail-w);
+  flex: 0 0 var(--rail-w);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2.75rem 1.9rem;
+  background: var(--rail);
+  color: var(--rail-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+}
+
+.identity { display: block; }
+
+.portrait {
+  display: block;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--rail-rule);
+  box-shadow: 0 0 0 1px var(--rail-rule), 0 0 0 6px rgba(143, 217, 183, 0.09);
+  margin-bottom: 1.4rem;
+}
+
+.sidebar .name {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.sidebar .name a {
+  color: var(--rail-ink);
+  text-decoration: none;
+}
+
+.sidebar .name a:hover { color: var(--rail-active); }
+
+.sidebar .role {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--rail-soft);
+  line-height: 1.5;
+}
+
+nav.site ul,
+.elsewhere ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+nav.site a {
+  display: block;
+  padding: 0.22rem 0;
+  color: var(--rail-ink);
+  text-decoration: none;
+  font-size: 1rem;
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+}
+
+nav.site a:hover { border-bottom-color: var(--rail-active); }
+
+nav.site a[aria-current="page"] {
+  color: var(--rail-active);
+  font-weight: 600;
+}
+
+.elsewhere {
+  border-top: 1px solid var(--rail-rule);
+  padding-top: 1.25rem;
+  font-size: 0.87rem;
+  margin-top: auto;
+}
+
+.elsewhere h2 {
+  font-family: var(--body);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rail-soft);
+  margin: 0 0 0.7rem;
+  font-weight: 600;
+  border: none;
+  padding: 0;
+}
+
+.elsewhere a {
+  color: var(--rail-soft);
+  text-decoration: none;
+}
+
+.elsewhere a:hover {
+  color: var(--rail-active);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------ text */
+
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 2.7rem;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  margin: 0 0 2rem;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.32rem;
+  color: var(--green);
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1.15rem; }
+
+a {
+  color: var(--green);
+  text-decoration-color: color-mix(in srgb, var(--green) 40%, transparent);
+  text-underline-offset: 2px;
+}
+
+a:hover { color: var(--green-lift); text-decoration-color: currentColor; }
+
+em { font-style: italic; }
+
+.lead {
+  font-size: 1.14rem;
+  line-height: 1.6;
+}
+
+.muted { color: var(--ink-soft); }
+
+ul.plain {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+ul.plain li {
+  padding-left: 1.05rem;
+  position: relative;
+}
+
+ul.plain li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.55;
+}
+
+/* --------------------------------------------------- entry listing */
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.entries > li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entries > li:last-child { border-bottom: none; }
+
+.entry-title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.04rem;
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  text-wrap: balance;
+}
+
+.entry-meta {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.55;
+}
+
+.entries p:last-of-type { margin-bottom: 0; }
+
+/* Badges carry information — an award, an invitation — never decoration. */
+.badge {
+  display: inline-block;
+  font-family: var(--body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.5rem;
+  border-radius: 3px;
+  vertical-align: 0.14em;
+  margin-left: 0.45rem;
+  white-space: nowrap;
+}
+
+.badge-award {
+  color: var(--award);
+  border: 1px solid color-mix(in srgb, var(--award) 45%, transparent);
+  background: color-mix(in srgb, var(--award) 11%, transparent);
+}
+
+.badge-invited {
+  color: var(--green);
+  border: 1px solid color-mix(in srgb, var(--green) 45%, transparent);
+  background: var(--green-tint);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.links a {
+  font-size: 0.79rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: var(--surface);
+  transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.links a:hover {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 50%, transparent);
+  background: var(--green-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* --------------------------------------------------- misc elements */
+
+.facts {
+  margin: 0 0 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.facts dt {
+  font-weight: 600;
+  font-size: 0.97rem;
+  color: var(--ink);
+}
+
+.facts dd {
+  margin: 0.1rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.97rem;
+}
+
+.facts dd a { color: var(--green); }
+
+.todo {
+  border-left: 3px solid var(--award);
+  background: color-mix(in srgb, var(--award) 9%, transparent);
+  padding: 0.8rem 1rem;
+  margin: 2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  border-radius: 0 3px 3px 0;
+}
+
+.todo strong { color: var(--ink); }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.87em;
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+footer.page {
+  margin-top: 4rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+footer.page p { margin: 0; }
+
+/* Visit count. Deliberately quiet: it is for him, not for the reader. */
+.visits {
+  margin-top: 0.7rem !important;
+  line-height: 0;
+  opacity: 0.45;
+  transition: opacity 150ms ease;
+}
+
+.visits:hover { opacity: 1; }
+
+.visits img {
+  height: 18px;
+  width: auto;
+  border-radius: 3px;
+}
+
+/* ---------------------------------------------------- mobile shift */
+
+@media (max-width: 860px) {
+  body { font-size: 16px; }
+
+  .layout { display: block; }
+
+  .sidebar {
+    position: static;
+    width: auto;
+    height: auto;
+    flex: none;
+    padding: 1.9rem 1rem 1.4rem;
+    display: block;
+  }
+
+  .identity {
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    gap: 0 1.1rem;
+    align-items: center;
+  }
+
+  .portrait {
+    width: 78px;
+    height: 78px;
+    margin-bottom: 0;
+    grid-row: span 2;
+  }
+
+  .sidebar .name { font-size: 1.24rem; margin-bottom: 0.2rem; }
+  .sidebar .role { font-size: 0.82rem; }
+
+  nav.site ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.1rem 1.2rem;
+    margin-top: 1.25rem;
+  }
+
+  .elsewhere {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+  }
+
+  .elsewhere ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.2rem 1.1rem;
+  }
+
+  main { padding: 2.25rem 1rem 3.5rem; }
+
+  h1 { font-size: 2rem; margin-bottom: 1.4rem; }
+  h2 { margin-top: 2.4rem; }
+  .lead { font-size: 1.06rem; }
+}
