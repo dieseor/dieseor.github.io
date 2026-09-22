@@ -449,21 +449,19 @@ footer.page {
 
 footer.page p { margin: 0; }
 
-/* Visit count. Deliberately quiet: it is for him, not for the reader. */
+/* Visit count. Deliberately quiet: it is for him, not for the reader.
+   Counted once per browsing session, not once per page. */
 .visits {
-  margin-top: 0.7rem !important;
-  line-height: 0;
-  opacity: 0.45;
+  margin-top: 0.3rem !important;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  opacity: 0.55;
   transition: opacity 150ms ease;
 }
 
 .visits:hover { opacity: 1; }
 
-.visits img {
-  height: 18px;
-  width: auto;
-  border-radius: 3px;
-}
+.visits[hidden] { display: none; }
 
 /* ---------------------------------------------------- mobile shift */
 
