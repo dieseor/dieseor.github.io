@@ -360,6 +360,12 @@ ul.plain li::before {
   background: color-mix(in srgb, var(--award) 11%, transparent);
 }
 
+.badge-soon {
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
 .badge-invited {
   color: var(--green);
   border: 1px solid color-mix(in srgb, var(--green) 45%, transparent);
@@ -373,7 +379,10 @@ ul.plain li::before {
   margin-top: 0.7rem;
 }
 
-.links a {
+.links a,
+.links button {
+  font: inherit;
+  cursor: pointer;
   font-size: 0.79rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -386,7 +395,8 @@ ul.plain li::before {
   transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
-.links a:hover {
+.links a:hover,
+.links button:hover {
   color: var(--green);
   border-color: color-mix(in srgb, var(--green) 50%, transparent);
   background: var(--green-tint);
@@ -571,6 +581,56 @@ footer.page p { margin: 0; }
   color: var(--ink-soft);
   border-top: 1px solid var(--rule);
   padding-top: 0.85rem;
+}
+
+/* -------------------------------------------- BibTeX (Publications)
+   Shown only if the browser refuses to copy to the clipboard. */
+
+pre.bibtex {
+  margin: 0.7rem 0 0;
+  padding: 0.7rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* ---------------------------------------------- software with a logo
+   Text on the left, logo on the right; stacked on narrow screens. The
+   logo has a white background of its own, so it sits on a white tile. */
+
+.entries > li.has-logo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  grid-template-areas: "text logo";
+  gap: 0 1.5rem;
+  align-items: start;
+}
+
+.sw-text { grid-area: text; }
+
+.sw-logo {
+  grid-area: logo;
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.3rem 0.45rem;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 560px) {
+  .entries > li.has-logo {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "logo" "text";
+  }
+  .sw-logo { width: 220px; margin: 0 0 0.9rem; }
 }
 
 /* ---------------------------------------------------- mobile shift */
