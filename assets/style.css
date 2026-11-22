@@ -463,6 +463,116 @@ footer.page p { margin: 0; }
 
 .visits[hidden] { display: none; }
 
+/* ----------------------------------- interactive figure (home page)
+   The Fréchet mean on the circle. Drawn by assets/frechet.js; the
+   figure stays hidden until the script has built it. */
+
+.demo {
+  margin: 2rem 0 2.4rem;
+  padding: 1.1rem 1.25rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.demo[hidden] { display: none; }
+
+.demo-canvas svg {
+  display: block;
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.fm-pt { cursor: grab; outline: none; }
+.fm-pt.is-dragging { cursor: grabbing; }
+.fm-hit { fill: transparent; }
+.fm-dot { fill: var(--bg); stroke: var(--ink); stroke-width: 2.4; }
+.fm-pt:focus-visible .fm-dot { stroke: var(--green-lift); stroke-width: 4; }
+
+.fm-euclid {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 2.2;
+  stroke-dasharray: 3 2.6;
+}
+
+.fm-frechet { fill: var(--award); }
+
+.demo-legend {
+  list-style: none;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1.3rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.demo-legend li { display: flex; align-items: center; gap: 0.45rem; }
+
+.lg { display: inline-block; flex: none; }
+.lg-point { width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--ink); background: var(--bg); }
+.lg-euclid { width: 12px; height: 12px; border-radius: 50%; border: 2px dashed var(--ink-soft); }
+.lg-frechet {
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 11px solid var(--award);
+}
+
+.demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.demo-controls button {
+  font: inherit;
+  font-size: 0.79rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: var(--bg);
+  cursor: pointer;
+  transition: color 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.demo-controls button:hover {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 50%, transparent);
+  background: var(--green-tint);
+}
+
+.demo-readout {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0.75rem 0 0.9rem;
+  min-height: 1.4em;
+  font-variant-numeric: tabular-nums;
+}
+
+.demo figcaption {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--rule);
+  padding-top: 0.85rem;
+}
+
 /* ---------------------------------------------------- mobile shift */
 
 @media (max-width: 860px) {
@@ -519,4 +629,5 @@ footer.page p { margin: 0; }
   h1 { font-size: 2rem; margin-bottom: 1.4rem; }
   h2 { margin-top: 2.4rem; }
   .lead { font-size: 1.06rem; }
+  .demo { padding: 0.9rem 0.75rem 1rem; }
 }
