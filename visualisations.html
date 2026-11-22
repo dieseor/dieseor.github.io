@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visualisations — Diego Serrano</title>
+<meta name="description" content="Interactive figures illustrating some of the ideas behind the research of Diego Serrano Ortega on statistics for random objects.">
+<link rel="canonical" href="https://dieseor.github.io/visualisations.html">
+<meta name="author" content="Diego Serrano Ortega">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%23123a2d'/><text x='32' y='45' font-family='Georgia,serif' font-size='32' fill='%23e8f2ec' text-anchor='middle'>DS</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Diego Serrano">
+<meta property="og:title" content="Visualisations — Diego Serrano">
+<meta property="og:description" content="Interactive figures illustrating some of the ideas behind the research of Diego Serrano Ortega on statistics for random objects.">
+<meta property="og:url" content="https://dieseor.github.io/visualisations.html">
+<meta property="og:image" content="https://dieseor.github.io/assets/photo.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="layout">
+
+  <!-- ===== sidebar: identical on every page, keep the five copies in sync ===== -->
+  <aside class="sidebar">
+    <div class="identity">
+      <img class="portrait" src="assets/photo.jpg" alt="Diego Serrano Ortega">
+      <p class="name"><a href="index.html">Diego Serrano</a></p>
+      <p class="role">PhD candidate in Statistics for Data Science<br>Universidad Carlos III de Madrid</p>
+    </div>
+
+    <nav class="site">
+      <ul>
+        <li><a href="index.html">About</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="visualisations.html" aria-current="page">Visualisations</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="elsewhere">
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href="https://scholar.google.es/citations?user=RAmTOqsAAAAJ">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0009-0003-7356-1263">ORCID</a></li>
+        <li><a href="https://github.com/dieseor">GitHub</a></li>
+        <li><a href="https://nicda.uc3m.es/">NICDA research group</a></li>
+      </ul>
+    </div>
+  </aside>
+  <!-- =============================== end sidebar =============================== -->
+
+  <main>
+    <div class="content">
+      <h1>Visualisations</h1>
+
+      <p class="lead">Interactive figures illustrating some of the ideas behind my research.</p>
+
+      <h2>The Fréchet mean on the circle</h2>
+
+      <p>A metric space has no addition, so even the mean has to be redefined. The Fréchet mean
+        of a sample is the point that minimises the sum of squared distances to the data. On the
+        circle, with distances measured along the circle, it can behave very differently from
+        the ordinary average.</p>
+
+      <figure class="demo demo-frechet" hidden>
+        <div class="demo-canvas"></div>
+        <ul class="demo-legend" aria-hidden="true">
+          <li><span class="lg lg-point"></span>Data: drag them</li>
+          <li><span class="lg lg-euclid"></span>Ordinary average</li>
+          <li><span class="lg lg-frechet"></span>Fréchet mean</li>
+        </ul>
+        <div class="demo-controls">
+          <button type="button" data-action="add">Add a point</button>
+          <button type="button" data-action="remove">Remove a point</button>
+          <button type="button" data-action="spread">Spread them evenly</button>
+          <button type="button" data-action="reset">Reset</button>
+        </div>
+        <p class="demo-readout"></p>
+        <figcaption>The points are directions on a circle: drag them. Their ordinary average,
+          taken in the plane, falls inside the circle, where there is no direction at all. The
+          Fréchet mean stays on the circle; the shading tracks the sum of squared distances, and
+          the stronger the green, the smaller it is. Two things have no Euclidean counterpart.
+          The sum can have several local minima, and as a point is dragged the deepest one can
+          change: the Fréchet mean then jumps, so it is not a continuous function of the data.
+          And if the points are spread evenly, it stops being unique.</figcaption>
+      </figure>
+
+      <footer class="page">
+        <p>Last updated November 2026.</p>
+      <p class="visits" hidden><span class="visit-count"></span> visits</p>
+      </footer>
+    </div>
+  </main>
+
+</div>
+<script src="assets/visits.js"></script>
+<script src="assets/frechet.js"></script>
+</body>
+</html>

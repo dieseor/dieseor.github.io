@@ -463,7 +463,7 @@ footer.page p { margin: 0; }
 
 .visits[hidden] { display: none; }
 
-/* ----------------------------------- interactive figure (home page)
+/* ------------------------- interactive figure (Visualisations page)
    The Fréchet mean on the circle. Drawn by assets/frechet.js; the
    figure stays hidden until the script has built it. */
 

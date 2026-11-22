@@ -1,4 +1,4 @@
-/* Fréchet mean on the circle — a small interactive figure for the home page.
+/* Fréchet mean on the circle — an interactive figure for the Visualisations page.
 
    The data are angles on the unit circle (directions). The ordinary average of
    the points, taken in the plane, falls inside the disc. The Fréchet mean is
