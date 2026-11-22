@@ -171,7 +171,7 @@
     }
 
     /* ordinary average, in the plane */
-    var e = euclideanMean(), rad = Math.hypot(e.x, e.y);
+    var e = euclideanMean();
     var ex = CX + R * e.x, ey = CY - R * e.y;
     eucDot.setAttribute('cx', ex.toFixed(2)); eucDot.setAttribute('cy', ey.toFixed(2));
 
@@ -196,10 +196,8 @@
       g.setAttribute('aria-valuetext', deg + ' degrees');
     });
 
-    readout.textContent =
-      'Ordinary average at radius ' + rad.toFixed(2) + ' (the circle has radius 1). ' +
-      (ms.length === 1 ? 'The Fréchet mean is unique.'
-                       : 'The Fréchet mean is not unique: ' + ms.length + ' points of the circle tie.');
+    readout.textContent = ms.length === 1 ? 'There is one Fréchet mean.'
+                                          : 'There are ' + ms.length + ' Fréchet means.';
   }
 
   /* ------------------------------------------------------------ controls */

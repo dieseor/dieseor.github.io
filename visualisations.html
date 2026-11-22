@@ -62,11 +62,6 @@
 
       <h2>The Fréchet mean on the circle</h2>
 
-      <p>A metric space has no addition, so even the mean has to be redefined. The Fréchet mean
-        of a sample is the point that minimises the sum of squared distances to the data. On the
-        circle, with distances measured along the circle, it can behave very differently from
-        the ordinary average.</p>
-
       <figure class="demo demo-frechet" hidden>
         <div class="demo-canvas"></div>
         <ul class="demo-legend" aria-hidden="true">
@@ -81,13 +76,11 @@
           <button type="button" data-action="reset">Reset</button>
         </div>
         <p class="demo-readout"></p>
-        <figcaption>The points are directions on a circle: drag them. Their ordinary average,
-          taken in the plane, falls inside the circle, where there is no direction at all. The
-          Fréchet mean stays on the circle; the shading tracks the sum of squared distances, and
-          the stronger the green, the smaller it is. Two things have no Euclidean counterpart.
-          The sum can have several local minima, and as a point is dragged the deepest one can
-          change: the Fréchet mean then jumps, so it is not a continuous function of the data.
-          And if the points are spread evenly, it stops being unique.</figcaption>
+        <figcaption>Drag the points around the circle. Their usual average lands inside the
+          circle, which is not a direction at all. The Fréchet mean stays on the circle, at the
+          spot closest to all the points; the greener the circle, the closer. Move a point far
+          enough and the Fréchet mean suddenly jumps; spread the points evenly and there is no
+          longer just one.</figcaption>
       </figure>
 
       <footer class="page">
